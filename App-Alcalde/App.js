@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Hola Coder</Text>
-      <Text>Bievenidos al primer estadio mundialista</Text>
+      <Text>Bienvenidos al primer estadio mundialista</Text>
       <Image source={require('./assets/gpc.png')} style={{width: 350, height: 250}}/>
       <StatusBar style="auto" />
     </View>
