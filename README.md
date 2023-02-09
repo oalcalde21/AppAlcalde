@@ -1,2 +1,0 @@
-# AppAlcalde
- Primera Entrega
