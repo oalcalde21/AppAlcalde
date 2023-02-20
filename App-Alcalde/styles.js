@@ -1,0 +1,80 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+    screen:{
+      padding: 30,
+      backgroundColor: '#9fc6f3',
+      height: '100%',
+      width: '100%',
+    },
+    inputContainer:{
+      marginTop: 30,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom : 30,
+    },
+    input:{
+      width: 200,
+      height: 50,
+      borderBottomColor: 'black',
+      borderBottomWidth: 1,
+    },
+    item:{
+        padding: 10,
+        borderColor: 'black',
+        borderWidth: 1,
+        textAlign: 'center',
+        width: '80%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FFF',
+    },
+    itemContainer:{
+        marginTop: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    contentList: {
+      padding: 5,
+      borderRadius: 5,
+      backgroundColor: "#fff",
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#9fc6f3',
+    },
+    modalContainer: {
+      height: 400,
+      width: 350,
+      marginTop: 100,
+      alignSelf:'center',
+      backgroundColor: 'rgba(255,255,255,0.80)',
+      boxShadow: '0 8px 32px 0 rgba(31,38,135,0.37)',
+      alignItems: 'center',
+      borderRadius: 10, 
+      backdropFilter: 'blur(200)',
+      border: '1px solid rgba(255,255,255,0.18)',
+    },
+    modalTitle: {
+      padding: 10,
+      borderRadius: 5,
+      color: '#fff',
+    },
+    modalText: {
+      padding: 10,
+      color: '#fff',
+      marginTop: 10,
+    },
+    modalContent: {
+      padding: 10,
+      width:'50%',
+      alignItems: 'center',
+      color: '#fff',
+    },
+    modalActions: {
+      flexDirection: 'row',
+      justifyContent:'space-around',
+      padding: 10,
+      marginTop: 100,
+    },
+  });
