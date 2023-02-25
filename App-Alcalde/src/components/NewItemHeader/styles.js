@@ -18,6 +18,12 @@ export const styles = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     backgroundColor: '#2296f3',
+    transform: [{ scale: 1 }],
+    transition: 'transform 0.2s',
+  },
+  buttonPressed: {
+    transform: [{ scale: 1.1 }],
+    backgroundColor: '#1766a6',
   },
   text:{
     color: 'white',

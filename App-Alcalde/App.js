@@ -46,11 +46,21 @@ export default function App() {
     setSelectedItem(null);
   };
 
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePressIn = () => {
+    setIsPressed(true);
+  };
+
+  const handlePressOut = () => {
+    setIsPressed(false);
+  };
+
   return (
     <View style={styles.screen}>
       {/* ADDITEM COMPONENT */}
       <Logo/>
-      <NewItemHeader onChangeText={onChangeText} itemText={itemText} addItemToState={addItemToState}/>
+      <NewItemHeader onChangeText={onChangeText} itemText={itemText} addItemToState={addItemToState} onPressIn={handlePressIn} OnPressOut={handlePressOut} isPressed={isPressed}/>
       {/* LIST COMPONENT */}
       <ItemList items={items} openModal={openModal} />
       {/* MODAl COMPONENT */}
