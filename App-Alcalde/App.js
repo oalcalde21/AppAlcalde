@@ -15,25 +15,35 @@ export default function App() {
     setItemText(text);
   };
 
-  useEffect(() => {
-    console.log("useEffect", "itemText", itemText, "ITEMS", items);
-  }, []);
-
   const addItemToState = () => {
-    console.log("addItemToState - start SIN JSON", items, itemText);
-    console.log(
-      "addItemToState - start CON JSON",
-      JSON.stringify({ items, itemText })
-    );
     const newArr = [...items, { id: Date.now(), value: itemText }];
     setItems(newArr);
     setItemText("");
-    console.log("addItemToState - end", "items", newArr);
+  };
+
+  const [isReady, setIsReady] = useState(false);
+
+  const handleIsReady = () => {
+    setIsPressed(true);
+  };
+
+  const handleIsReadyCancel = () => {
+    setIsPressed(false);
+  };  
+  
+  const [borderColor, setBorderColor] = useState('red');
+
+  const handleSetBorderColor = () => {
+    setBorderColor('red');
   };
 
   const openModal = (item) => {
+    if (isReady){
     setSelectedItem(item);
     setModalVisible(true);
+    }else{
+      setModalVisible(false);
+    }
   };
 
   const onCancelModal = () => {
@@ -62,7 +72,7 @@ export default function App() {
       <Logo/>
       <NewItemHeader onChangeText={onChangeText} itemText={itemText} addItemToState={addItemToState} onPressIn={handlePressIn} OnPressOut={handlePressOut} isPressed={isPressed}/>
       {/* LIST COMPONENT */}
-      <ItemList items={items} openModal={openModal} />
+      <ItemList items={items} openModal={openModal} setBorderColor borderColor />
       {/* MODAl COMPONENT */}
       <Modal modalVisible={modalVisible} selectedItem={selectedItem} onCancelModal={onCancelModal} onDeleteModal={onDeleteModal}/>
     </View>
