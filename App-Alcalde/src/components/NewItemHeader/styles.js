@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   addItemInputContainer: {
-    marginTop: 30,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -12,4 +11,15 @@ export const styles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1,
   },
+  button: {
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#2296f3',
+  },
+  text:{
+    color: 'white',
+  }
   });

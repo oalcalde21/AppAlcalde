@@ -2,6 +2,7 @@ import { ItemList, Modal, NewItemHeader } from "./src/components";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
+import Logo from "./src/components/Logo/Logo";
 import {styles} from './styles';
 
 export default function App() {
@@ -48,9 +49,10 @@ export default function App() {
   return (
     <View style={styles.screen}>
       {/* ADDITEM COMPONENT */}
+      <Logo/>
       <NewItemHeader onChangeText={onChangeText} itemText={itemText} addItemToState={addItemToState}/>
       {/* LIST COMPONENT */}
-      <ListItem items={items} openModal={openModal} />
+      <ItemList items={items} openModal={openModal} />
       {/* MODAl COMPONENT */}
       <Modal modalVisible={modalVisible} selectedItem={selectedItem} onCancelModal={onCancelModal} onDeleteModal={onDeleteModal}/>
     </View>

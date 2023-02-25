@@ -1,4 +1,4 @@
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 import React from "react";
 import {styles} from './styles'
@@ -8,24 +8,12 @@ const NewItemHeader = ({onChangeText, itemText, addItemToState, inputPlaceHolder
     <>
     <View style={styles.addItemInputContainer}>
       <TextInput placeholder="Ingrese un item" style={styles.input} onChangeText={onChangeText} value={itemText}/>
-      <Button title="Agregar" onPress={addItemToState} />
+      <TouchableOpacity style={styles.button} onPress={addItemToState}>
+          <Text style={styles.text}>Agregar</Text>
+        </TouchableOpacity>
     </View>
     </>
   );
 };
 
 export default NewItemHeader;
-
-const styles = StyleSheet.create({
-  addItemInputContainer: {
-    marginTop: 30,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  input: {
-    width: 200,
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-  },
-});
