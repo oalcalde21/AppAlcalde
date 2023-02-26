@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        backgroundColor: "#ccc",
+        backgroundColor: "red",
       },
       item: {
         padding: 10,
