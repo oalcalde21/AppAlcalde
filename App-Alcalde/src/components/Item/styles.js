@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#a7cae7',
+        borderColor: 'red',
     },
     item: {
       padding: 10,

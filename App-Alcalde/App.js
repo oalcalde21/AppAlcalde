@@ -1,4 +1,4 @@
-import { ItemList, Modal, NewItemHeader } from "./src/components";
+import { ItemList, Modal, ModalDelete, ModalIsReady, NewItemHeader } from "./src/components";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -10,6 +10,7 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [borderColor, setBorderColor] = useState('red');
 
   const onChangeText = (text) => {
     setItemText(text);
@@ -19,42 +20,54 @@ export default function App() {
     const newArr = [...items, { id: Date.now(), value: itemText }];
     setItems(newArr);
     setItemText("");
-  };
-
-  const [isReady, setIsReady] = useState(false);
-
-  const handleIsReady = () => {
-    setIsPressed(true);
-  };
-
-  const handleIsReadyCancel = () => {
-    setIsPressed(false);
-  };  
-  
-  const [borderColor, setBorderColor] = useState('red');
-
-  const handleSetBorderColor = () => {
-    setBorderColor('red');
-  };
+  }; 
 
   const openModal = (item) => {
-    if (isReady){
     setSelectedItem(item);
-    setModalVisible(true);
-    }else{
-      setModalVisible(false);
+    if (borderColor === 'red') {
+      setModalVisible(true);
+    } else {
+      setBorderColor('green');
     }
   };
 
   const onCancelModal = () => {
-    setModalVisible(!modalVisible);
+    setModalVisible(false);
   };
 
   const onDeleteModal = (id) => {
-    setModalVisible(!modalVisible);
+    setModalVisible(false);
     setItems((oldArry) => oldArry.filter((item) => item.id !== id));
     setSelectedItem(null);
   };
+
+  const handleIsReadyCancel = () => {
+    setBorderColor('red');
+    setSelectedItem(null);
+    setModalVisible(false);
+  }
+
+  const handleIsReady = () => {
+    setBorderColor('green');
+    setSelectedItem(null);
+    setModalVisible(false);
+  }
+
+  const handleSetBorderColor = () => {
+    setBorderColor('green');
+    setSelectedItem(null);
+  }
+
+  const handleDeleteItem = () => {
+    if (borderColor === 'red') {
+      setModalVisible(true);
+    } else {
+      setModalVisible(false);
+      setItems((oldArry) => oldArry.filter((item) => item.id !== selectedItem.id));
+      setSelectedItem(null);
+      setBorderColor('red');
+    }
+  }
 
   const [isPressed, setIsPressed] = useState(false);
 
@@ -72,9 +85,13 @@ export default function App() {
       <Logo/>
       <NewItemHeader onChangeText={onChangeText} itemText={itemText} addItemToState={addItemToState} onPressIn={handlePressIn} OnPressOut={handlePressOut} isPressed={isPressed}/>
       {/* LIST COMPONENT */}
-      <ItemList items={items} openModal={openModal} setBorderColor borderColor />
-      {/* MODAl COMPONENT */}
-      <Modal modalVisible={modalVisible} selectedItem={selectedItem} onCancelModal={onCancelModal} onDeleteModal={onDeleteModal}/>
+      <ItemList items={items} openModal={openModal} setBorderColor={setBorderColor} borderColor={borderColor}/>
+      {/* MODAL COMPONENTS */}
+      {borderColor === 'red' ? (
+        <ModalDelete modalVisible={modalVisible} selectedItem={selectedItem} onCancelModal={onCancelModal} onDeleteModal={handleDeleteItem}/>
+      ) : (
+        <ModalIsReady modalVisible={modalVisible} selectedItem={selectedItem} onCancelModal={handleIsReadyCancel} onIsReady={handleIsReady} onSetBorderColor={handleSetBorderColor}/>
+      )}
     </View>
   );
 }
